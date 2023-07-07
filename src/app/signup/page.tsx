@@ -55,8 +55,7 @@ export default function SignUpPage() {
                     </h2>
                 </div>
 
-                <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-                    <form className="space-y-6" action="#" method="POST">
+                <div className="mt-10 space-y-6 sm:mx-auto sm:w-full sm:max-w-sm">
                         <div>
                             <label htmlFor="username" className="block text-sm font-medium leading-6 text-gray-200">
                                 Username
@@ -120,10 +119,9 @@ export default function SignUpPage() {
                                 onClick={onSignUp}
                             >
                                 Register
-                            </button>
-                        </div>
-                    </form>
+                        </button>
                     <p className="mt-4">Already Register? <Link className="text-indigo-600" href={'/login'}>Login</Link></p>
+                    </div>
                 </div>
             </div>
         </>

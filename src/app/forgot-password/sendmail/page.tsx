@@ -39,8 +39,7 @@ export default function SendMail() {
                     </h2>
                 </div>
 
-                <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-                    <form className="space-y-6" action="#" method="POST">
+                <div className="mt-10 space-y-6 sm:mx-auto sm:w-full sm:max-w-sm">
                         <div>
                             <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-200">
                                 Email address
@@ -68,8 +67,7 @@ export default function SendMail() {
                             >
                                 Send
                             </button>
-                        </div>
-                    </form>
+                    </div>
                 </div>
             </div>
         </>

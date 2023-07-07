@@ -53,8 +53,7 @@ export default function ForgotPassword() {
                     </h2>
                 </div>
 
-                <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-                    <form className="space-y-6" action="#" method="POST">
+                <div className="mt-10 space-y-6 sm:mx-auto sm:w-full sm:max-w-sm">
                         <div>
                             <label htmlFor="password" className="block text-sm font-medium leading-6 text-gray-200">
                                 Password
@@ -102,8 +101,7 @@ export default function ForgotPassword() {
                             >
                                 Change Password
                             </button>
-                        </div>
-                    </form>
+                    </div>
                 </div>
             </div>
         </>
