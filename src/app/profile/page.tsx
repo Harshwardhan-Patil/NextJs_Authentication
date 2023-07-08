@@ -35,20 +35,17 @@ export default function Profile() {
         }
     }
 
-    useEffect(() => {
-        console.log("Starting Fetching")
-        const getData = async () => {
-            try {
-                const response = await axios.get('/api/users/me');
-                console.log(response.data);
-                setUser(response.data.data);
-            } catch (error) {
-                if (error instanceof Error)
-                    throw new Error(error.message);
-            }
+
+    const getData = async () => {
+        try {
+            const response = await axios.get('/api/users/me');
+            console.log(response.data);
+            setUser(response.data.data);
+        } catch (error) {
+            if (error instanceof Error)
+                throw new Error(error.message);
         }
-        getData();
-    }, [user])
+    }
 
     return (
         <>
@@ -90,6 +87,7 @@ export default function Profile() {
                         </dl>
                     </div>
                 </div>
+                <button className="p-2 rounded-sm bg-cyan-500 mt-4 hover:bg-cyan-600" onClick={getData}>Get User Data</button>
             <button
                     className="p-2 rounded-sm bg-cyan-500 mt-4 hover:bg-cyan-600"
                 onClick={logout}

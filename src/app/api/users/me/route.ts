@@ -9,11 +9,13 @@ export async function GET(request: NextRequest) {
 
     try {
         const id = await getDataFromToken(request);
-        const userData = await User.findById(id).select('-password');
-
+        console.log(id);
+        const user = await User.findOne({ _id: id }).select('-password');
+        console.log(user);
         return NextResponse.json({
             message: 'User Found',
-            data: userData
+            data: user,
+            id: id
         })
     } catch (error) {
         if (error instanceof Error)
