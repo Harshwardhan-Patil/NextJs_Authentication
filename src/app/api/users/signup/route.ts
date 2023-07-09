@@ -15,7 +15,7 @@ export async function POST(request: NextRequest) {
         const user = await User.findOne({ email });
 
         if (user) {
-            return NextResponse.json({ message: 'User already  exist', status: 400 })
+            return NextResponse.json({ message: 'User already  exist' }, { status: 400 })
         }
         //hash the password
         const salt = await bcryptjs.genSalt(10);
@@ -33,10 +33,9 @@ export async function POST(request: NextRequest) {
         return NextResponse.json({
             message: 'User created successfully',
             user: savedUser,
-            status: 200,
-        })
+        }, { status: 200 })
 
     } catch (error: any) {
-        return NextResponse.json({ message: error.message, status: 500 })
+        return NextResponse.json({ message: error.message }, { status: 500 })
     }
 }

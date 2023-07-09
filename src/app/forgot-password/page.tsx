@@ -18,11 +18,11 @@ export default function ForgotPassword() {
         const toastId = toast.loading('Changing Password');
         if (user.password !== user.confirmPassword) {
             toast.error('The password and confirm password do not match. Please ensure that both fields contain the same value.')
+            return;
         }
         try {
             const response = await axios.post('/api/users/forgot-password', { password: user.password, token });
-            console.log(response.data);
-            if (response.data.status === 200) {
+            if (response.status === 200) {
                 toast.success('Password Changed Successfully');
                 router.push('/login');
             } else {

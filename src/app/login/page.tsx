@@ -19,7 +19,7 @@ export default function SignUpPage() {
         const toastId = toast.loading('Logging');
         try {
             const response = await axios.post('/api/users/login', user);
-            if (response.data.status === 200) {
+            if (response.status === 200) {
                 toast.success(response.data.message);
                 router.push('/profile');
                 return;

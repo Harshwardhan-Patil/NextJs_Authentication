@@ -9,7 +9,7 @@ type User = {
     username: string,
     email: string,
 }
-
+export const revalidate = 60;
 export default function Profile() {
     const router = useRouter();
     const [user, setUser] = useState<User | null>(null);
@@ -18,7 +18,7 @@ export default function Profile() {
         const toastId = toast.loading('Logging out');
         try {
             const response = await axios.get('/api/users/logout');
-            if (response.data.status === 200) {
+            if (response.status === 200) {
                 toast.success("Logout Successfully");
                 router.push('/login');
             } else {
@@ -36,16 +36,18 @@ export default function Profile() {
     }
 
 
-    const getData = async () => {
-        try {
-            const response = await axios.get('/api/users/me');
-            console.log(response.data);
-            setUser(response.data.data);
-        } catch (error) {
-            if (error instanceof Error)
+    useEffect(() => {
+        const getData = async () => {
+            try {
+                const response = await axios.get('/api/users/me');
+                setUser(response.data.user);
+            } catch (error) {
+                if (error instanceof Error)
                 throw new Error(error.message);
+            }
         }
-    }
+        getData();
+    }, [user])
 
     return (
         <>
@@ -87,7 +89,6 @@ export default function Profile() {
                         </dl>
                     </div>
                 </div>
-                <button className="p-2 rounded-sm bg-cyan-500 mt-4 hover:bg-cyan-600" onClick={getData}>Get User Data</button>
             <button
                     className="p-2 rounded-sm bg-cyan-500 mt-4 hover:bg-cyan-600"
                 onClick={logout}

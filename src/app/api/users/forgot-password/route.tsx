@@ -10,11 +10,11 @@ export async function POST(request: NextRequest) {
         const { token, password } = await request.json();
 
         if (!token) {
-            return NextResponse.json({ message: "Token is missing", status: 403 })
+            return NextResponse.json({ message: "Token is missing" }, { status: 403 })
         }
         const user = await User.findOne({ forgotPasswordToken: token });
         if (!user) {
-            return NextResponse.json({ message: 'User not found', status: 403 })
+            return NextResponse.json({ message: 'User not found' }, { status: 403 })
         }
 
 
@@ -25,10 +25,11 @@ export async function POST(request: NextRequest) {
         user.forgotPasswordToken = undefined;
         user.forgotPasswordTokenExpiry = undefined;
         await user.save();
-        return NextResponse.json({ message: 'Password Changed Successfully', status: 200 })
+
+        return NextResponse.json({ message: 'Password Changed Successfully' }, { status: 200 })
     } catch (error) {
         if (error instanceof Error) {
-            return NextResponse.json({ message: error.message, status: 500 })
+            return NextResponse.json({ message: error.message }, { status: 500 })
         }
     }
 

@@ -14,7 +14,7 @@ export default function VerifyEmail() {
         const toastId = toast.loading('Verifying');
         try {
             const response = await axios.post('/api/users/verifyemail', { token });
-            if (response.data.status === 200) {
+            if (response.status === 200) {
                 toast.success('Verified', { duration: 10000 })
                 router.push('/login');
             } else {

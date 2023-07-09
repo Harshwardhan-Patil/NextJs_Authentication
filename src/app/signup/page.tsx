@@ -17,8 +17,7 @@ export default function SignUpPage() {
         const toastId = toast.loading('Please wait while Registering')
         try {
             const response = await axios.post('/api/users/signup', user);
-            console.log(response.data);
-            if (response.data.status === 200) {
+            if (response.status === 200) {
                 toast.success("Please check your email to verify your email address.", { duration: 6000 });
             } else {
                 toast.error(response.data.message);

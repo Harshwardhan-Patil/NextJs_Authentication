@@ -11,7 +11,7 @@ export default function SendMail() {
         const toastId = toast.loading('Sending');
         try {
             const response = await axios.post('/api/users/sendmail', { email })
-            if (response.data.status === 200) {
+            if (response.status === 200) {
                 toast.success("Please check your email.", { duration: 60000 });
             } else {
                 toast(response.data.message);
